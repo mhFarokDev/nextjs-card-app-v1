@@ -1,4 +1,4 @@
-import { fetchAllUser } from "./userAPI";
+import { createUser, fetchAllUser } from "./userAPI";
 
 const { createSlice } = require("@reduxjs/toolkit");
 
@@ -12,6 +12,9 @@ const userSlice = createSlice({
     extraReducers : (builder) => {
         builder.addCase(fetchAllUser.fulfilled, (state, action)=>{
             state.users = action.payload
+        }),
+        builder.addCase(createUser.fulfilled, (state, action) =>{
+            state.users.push(action.payload);
         })
     }
 

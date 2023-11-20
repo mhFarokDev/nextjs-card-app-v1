@@ -14,3 +14,19 @@ export async function GET() {
     }
   
 }
+
+
+export async function POST(request) {
+    try {
+        await mongoDBconnect()
+        const data = await request.json()
+        const users = await User.create(data)
+        if (!users) {
+            throw new Error("User not added.")
+        }
+
+        return NextResponse.json(users)
+    } catch (error) {
+        return NextResponse.json({message : error.message})
+    }
+}
