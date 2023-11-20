@@ -32,3 +32,28 @@ input[type="radio"] {
     color: #fff;
     cursor: pointer;
 }
+
+
+/* users */
+.users-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+.user-body {
+    width: 233px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.user-body .user-img {
+    text-align: center;
+}
+.user-body .user-img img {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    margin-bottom: 10px;
+}

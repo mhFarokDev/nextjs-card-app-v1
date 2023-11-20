@@ -12,8 +12,6 @@ export const fetchAllUser = createAsyncThunk("user/fetchuser", async()=>{
 // post/add new user
 export const createUser = createAsyncThunk("user/createuser", async(data)=>{
     const users = await createNewUser(data)
-    if (users) {
-        alert("done")
-    }
+    
     return users;
 })

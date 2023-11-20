@@ -1,9 +1,13 @@
 "use client"
 import { getAllUserData } from '@/libs/GetAllusers'
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { createUser, fetchAllUser } from './userAPI'
 import { selectUsers } from './userSlice'
+import Swal from 'sweetalert2'
+import suspanceUser from './components/suspanceUser'
+import Image from 'next/image'
+import UsersLists from './components/UsersLists'
 import "./user.css"
 
 export default function Users() {
@@ -13,7 +17,7 @@ export default function Users() {
     }, [dispatch])
 
     const {users} = useSelector(selectUsers)
-    
+
     // contact form management
     const [input, setInput] = useState({
         name : "",
@@ -30,23 +34,33 @@ export default function Users() {
             ...prevState,
             [e.target.name] : e.target.value
         }))
+        
     }
 
     const HandleFormSubmit = (e) =>{
         e.preventDefault()
-        dispatch(createUser(input))
-        setInput({
-            name : "",
-            email: "",
-            call : "",
-            photo : "",
-            gender : ""
-        })
+        const addRes = dispatch(createUser(input))
+        if (addRes) {
+            Swal.fire({
+                title: 'Success!',
+                text: 'User added successful.',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
+
+              setInput({
+                name : "",
+                email: "",
+                call : "",
+                photo : "",
+                gender : ""
+            })
+        }
+        
     }
 
   return (
     <div className='container'>
-        <h1><center>User Page</center></h1>
 
         <div className="contact-card">
             <div className="card-title">
@@ -64,6 +78,14 @@ export default function Users() {
                     <button>Add user</button>
                 </form>
             </div>
+        </div>
+
+
+        <div className="users-list">
+            <Suspense fallback={<suspanceUser/>}>
+                <UsersLists users={users}/>
+            </Suspense>
+            
         </div>
     </div>
   )
