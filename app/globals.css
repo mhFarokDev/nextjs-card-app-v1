@@ -94,4 +94,35 @@ a {
   text-decoration: none;
 }
 
+.container{
+  width: 80%;
+  margin: auto;
+  background-color: #eee;
+  padding: 20px;
+}
+
+.nav{
+  width: 100%;
+  padding: 10px 50px;
+  background-color: #999;
+  box-sizing: border-box;
+  text-align: center;
+}
+.nav ul{
+  padding: 10px 0px;
+}
+.nav ul li{
+  list-style: none;
+  display: inline-block;
+}
+.nav ul li a {
+  padding: 10px 20px;
+  background-color: rgb(194 0 222);
+  color: #fff;
+  margin: 10px 8px;
+  border-radius: 10px;
+}
+.nav ul li a.active {
+  background: rgb(115 7 131);
+}
 

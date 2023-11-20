@@ -6,14 +6,22 @@ const counterSlice = createSlice({
     initialState : {
         count : 0
     },
-    reducers : {},
-    
+    reducers : {
+        increement : (state, action) =>{
+            state.count++;
+        },
+        decreement : (state, action) =>{
+            state.count--;
+        }
+    },
+
 });
 
 
 
 // export selectors
+export const selectCount = (state) => state.counter;
 // export actions
-export const {} = counterSlice.actions;
+export const {increement, decreement} = counterSlice.actions;
 // export reducer
 export default counterSlice.reducer;
