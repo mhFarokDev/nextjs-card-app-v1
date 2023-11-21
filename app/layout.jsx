@@ -9,13 +9,8 @@ import Link from 'next/link'
 
 
 export default function RootLayout({ children }) {
-  // const allitems = document.querySelectorAll(".nav ul li")
-  // allitems.forEach(element => {
-  //   element.addEventListener("click", ()=>{
-  //     // console.log(element.childNodes)
-  //     element.childNodes[0].classList.add("active");
-  //   })
-  // });
+  
+  
 
   return (
     <html lang="en">

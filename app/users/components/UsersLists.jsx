@@ -1,12 +1,16 @@
+"use client"
 import Image from 'next/image';
 import React from 'react'
+import { useSelector } from 'react-redux';
+import { selectUsers } from '../userSlice';
 
-export default function UsersLists({users}) {
-    const usersHere = users
+export default function UsersLists() {
+    // const usersHere = users
+    const {users} = useSelector(selectUsers)
   return (
     <>
     {
-        usersHere.map(data => 
+        users.map(data => 
             <div className="user-body">
                 <div className="user-img">
                 <Image src={data.photo} width="200" height="200"/>

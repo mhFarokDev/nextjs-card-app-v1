@@ -1,12 +1,14 @@
 "use client"
-import { getAllUserData } from '@/libs/GetAllusers'
+import dynamic from 'next/dynamic';
+
+// import { getAllUserData } from '@/libs/GetAllusers'
 import React, { Suspense, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { createUser, fetchAllUser } from './userAPI'
 import { selectUsers } from './userSlice'
 import Swal from 'sweetalert2'
 import suspanceUser from './components/suspanceUser'
-import Image from 'next/image'
+// const UsersLists = dynamic(() => import('./components/UsersLists'));
 import UsersLists from './components/UsersLists'
 import "./user.css"
 
@@ -16,7 +18,7 @@ export default function Users() {
         dispatch(fetchAllUser())
     }, [dispatch])
 
-    const {users} = useSelector(selectUsers)
+    // const {users} = useSelector(selectUsers)
 
     // contact form management
     const [input, setInput] = useState({
@@ -27,6 +29,7 @@ export default function Users() {
         gender : ""
     })
 
+    
     // handle inputs fields
     const handleInputs = (e) =>{
         
@@ -80,10 +83,11 @@ export default function Users() {
             </div>
         </div>
 
-
+        
         <div className="users-list">
-            <Suspense fallback={<suspanceUser/>}>
-                <UsersLists users={users}/>
+            <Suspense fallback="loading...">
+            {/* <Suspense fallback={<suspanceUser/>}> */}
+                <UsersLists/>
             </Suspense>
             
         </div>
