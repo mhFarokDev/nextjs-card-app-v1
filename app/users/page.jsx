@@ -1,14 +1,10 @@
 "use client"
-import dynamic from 'next/dynamic';
 
-// import { getAllUserData } from '@/libs/GetAllusers'
 import React, { Suspense, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { createUser, fetchAllUser } from './userAPI'
 import { selectUsers } from './userSlice'
 import Swal from 'sweetalert2'
-import suspanceUser from './components/suspanceUser'
-// const UsersLists = dynamic(() => import('./components/UsersLists'));
 import UsersLists from './components/UsersLists'
 import "./user.css"
 
